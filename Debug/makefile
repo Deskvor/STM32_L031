@@ -52,6 +52,9 @@ default.size.stdout \
 OBJDUMP_LIST += \
 STM32L031K6T6.list \
 
+OBJCOPY_HEX += \
+STM32L031K6T6.hex \
+
 
 # All Target
 all: main-build
@@ -75,12 +78,17 @@ STM32L031K6T6.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
+STM32L031K6T6.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "STM32L031K6T6.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) STM32L031K6T6.elf STM32L031K6T6.list STM32L031K6T6.map default.size.stdout
+	-$(RM) STM32L031K6T6.elf STM32L031K6T6.hex STM32L031K6T6.list STM32L031K6T6.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

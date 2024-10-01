@@ -1,4 +1,4 @@
 ../Core/Src/veml6030.c:4:6:VEML6030_Init	1
-../Core/Src/veml6030.c:11:10:VEML6030_ReadALS	1
-../Core/Src/veml6030.c:16:6:VEML6030_WriteRegister	2
-../Core/Src/veml6030.c:32:10:VEML6030_ReadRegister	1
+../Core/Src/veml6030.c:12:10:VEML6030_ReadALS	1
+../Core/Src/veml6030.c:18:6:VEML6030_WriteRegister	1
+../Core/Src/veml6030.c:29:10:VEML6030_ReadRegister	2
